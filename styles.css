@@ -38,6 +38,7 @@ body {
     position: relative;
     height: 100vh;
     width: 100vw;
+    min-height: 50rem;
     background: var(--light-gray-blue);
     font-family: var(--heading-family);
 }
@@ -53,6 +54,11 @@ body {
     transform: translate(-50%, -50%);
     border-radius: 10px;
     box-shadow: var(--box-shadow-default);
+
+    /* min-width: 25rem;
+    min-height: 32rem;
+    width: 60vw; */
+    /* max-height: 45rem; */
 }
 
 .wrapper > :first-child {
@@ -170,12 +176,12 @@ body {
 }
 
 .links-popup__share-icon:hover {
-    background: var(--very-dark-gray-blue);
+    background: var(--desaturated-dark-blue);
 }
 
 .links-popup__share-icon:hover img,
 .links-popup__share-icon:active img {
-    filter: brightness(100)
+    filter: brightness(100);
 }
 
 #links-popup-toggle {
@@ -190,8 +196,13 @@ body {
     height: 100%;
 }
 
-#links-popup-toggle:checked + .links-popup__social-media {
+#links-popup-toggle:checked ~ .links-popup__social-media {
     display: inline-block;
+}
+
+#links-popup-toggle:checked ~ .links-popup__share-icon {
+    filter: brightness(100);
+    background: var(--desaturated-dark-blue);
 }
 
 
@@ -262,10 +273,13 @@ body {
 @media(max-width: 750px) {
     .wrapper {
         min-width: 25rem;
-        min-height: 40rem;
+        min-height: 45rem;
         width: 60vw;
-        height: 75vh;
+        height: 70vh;
+        max-width: 25rem;
         max-height: 45rem;
+        overflow: hidden;
+        border-radius: 10px;
     }
 
     .wrapper > .img-container,
@@ -277,6 +291,15 @@ body {
 
     .img-container {
         height: 40%;
+    }
+
+    .card__footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding: 0 2rem;
+        margin-bottom: 2rem;
+        bottom: 0;
     }
 
     .card {
@@ -311,6 +334,34 @@ body {
     .links-popup__share-icon {
         width: 3rem;
         height: 3rem;
+        right: 1.8rem;
+        top: 1.3rem
+    }
+
+    .links-popup__social-media {
+        padding-left: 1rem;
+        border-radius: 0;
+        top: 0;
+        left: 0;
         right: 0;
+        bottom: 0;
+        width: 25rem;
+        min-height: 6rem;
+    }
+
+    .links-popup__share-icon {
+        z-index: 100;
+    }
+
+    .links-popup__title {
+        width: 30%;
+        font-size: 1rem;
+    }
+    .links-popup__icon-wrapper {
+        width: 10%;
+    }
+    
+    .links-popup__social-media::before {
+        display: none;
     }
 }
